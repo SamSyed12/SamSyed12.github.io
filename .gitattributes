@@ -3,3 +3,24 @@
 
 # Declare files that will always have LF line endings on checkout.
 *.html text eol=lf
+*.css text
+*.js text
+*.py text
+*.java text
+*.md text
+*.txt text
+
+# Declare files that will always have CRLF line endings on checkout.
+*.bat eol=crlf
+*.cmd eol=crlf
+
+# Declare files that will always have LF line endings on checkout.
+*.sh eol=lf
+*.yml eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.jpg binary
+*.png binary
+*.gif binary
+*.exe binary
+*.zip binary
