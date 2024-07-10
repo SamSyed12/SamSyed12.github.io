@@ -3378,7 +3378,7 @@ input, select, textarea {
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
-		background-image: url('../../images2/Lat12.jpeg');
+		background-image: url('../../Images2/Lat12.jpeg');
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -3624,7 +3624,7 @@ input, select, textarea {
 		#two {
 			position: relative;
 			padding: 4em 0;
-			background-image: url('../../images2/Lat13.jpeg');
+			background-image: url('../../Images2/Lat13.jpeg');
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
