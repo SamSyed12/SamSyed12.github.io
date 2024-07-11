@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Project- Sameel Syed</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Sameel Syed</strong> <span>Data Analyst</span></a>
+						<nav>
+							<a href="#menu"></a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="all-projects.html">All Projects</a></li>
+							<li><a href="index.html#about">About</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="resume.html" class="button primary fit">Resume</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- iFood -->
+							<section id="iFood">
+								<div class="inner">
+									<header class="major">
+										<h1>iFood: What's Working and What Isn't ?</h1>
+									</header>
+									<p>Considering it's position as the lead food delivery app in Brazil, with presence in over a thousand cities nationwide, 
+										maintaining customer engagement is key for both growth and consolidating it's position as the as the market leader. 
+										The company provided a sample <a href="https://www.kaggle.com/datasets/jackdaoud/marketing-data">dataset</a> that mocks metainformation 
+										on customers demographics and campaign interactions whilst also providing company data. I aimed to understand this data and conducted a robust exploratory 
+										analysis in the hopes of finding business opportunities & insights together with data driven proposals that could optimize the campaigns results & 
+										generate value for the company. After the removal of duplicate information and imputing outliers/missing data by the 
+										mean the dataset consisted of 2205 customers. In total 37 different data attributes were provided in the dataset and included the following types of 
+										information:
+									</p>
+									<p><b>Customer Demographics | Customer Product and Channel Preferences | Customer Campaign Acceptance/Rejection | Company Metrics</b></p>
+									<h4><u>Some Key Takeaways</u>
+									</h4>
+									<p> -   <b>72%</b> of customers <em>rejected</em> all campaigns. <br>
+										-   Customer's with <b>no children</b> and customers with <b>high income</b> spend more and are more <em>responsive to campaigns</em>. <br>
+										-	Campaign acceptance and expenditure is <b>lower</b> in those who <em>earn less</em> and those who <em> kids</em>. <br>
+										-	<b>Wine</b> and <b>Meat</b> drive iFood’s revenue; making up <b>83%</b> of total revenue. <br>
+										-	<b>Web</b> and <b>In store</b> purchases are most popular among consumers, these channels account for <b>67%</b> of all sales. <br>
+										-	<em>Campaign 6</em> was most successful (attracted <b>15%</b> of the consumer base), <em>Campaign 2</em> the least (<b>1%</b> success rate). <br> 
+										-   Customer's who were responsive to <em>Campaign 5</em>spent the most with an average of <b>$1536</b> per customer. <br>
+										- 	The average iFood customer spends around <b>$563</b> (with <em>$306</em> attributed to Wine and <em>$166</em> to Meat). <br>
+									</p>
+
+									<hr class="major" />
+
+									<h3 id="iFoodSect1"><u>What's Driving Customer Spending</u></h3>
+									<div class = "row">
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/IncoVSamount.png" alt="" /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/prodinfo.png" alt="" /></span>
+										</div>
+										<p>- Customers who earn more are spending more on iFood products <b>[68% of expenditure variance is explained by income]</b> <br>
+										   - Revenue is largely driven by sales of wine and meat <b>[83% of iFood revenue is generate via these products]</b></p>
+
+										<p>A bivariate analysis suggests that as customer income rises so does the average amount spent by the customer. Based on this, 
+										customers were segmented by income into four groups and their spending habits were investigated. The majority of iFood’s customer 
+										income levels are concentrated within the $25000 - $75000 range with this making up 73% of customers.
+										</p>
+									</div>
+									<div class = "row">
+										<div class="col-4 col-12-small">
+											<span class="image fit"><img src="Images2/customerIncPro.png" alt="" /></span>
+										</div>
+										<div class="col-4 col-12-small">
+											<span class="image fit"><img src="Images2/baseIncL.png" alt="" /></span>
+										</div>
+										<div class="col-4 col-12-small">
+											<span class="image fit"><img src="Images2/MSinc.png" alt="" /></span>
+										</div>
+										<p>- Those who earn more than <em>$50000</em> make up <b>89%</b> of IFood's income while <b>39%</b> of this is solely attributed to those making more than <em>$75000</em> a year</p>
+									</div>
+									<div class = "row">
+										<div class="col-4 col-12-small">
+											<br>
+											<p>Although <em>48% of IFood’s customers make less than $50000 a year, these customers are only responsible for 11% on the income</em> generated by iFood 
+												over the previous two years. Thus, most of iFood’s revenue is being driven by customer’s earning more than $50000. Notably customers who 
+												earned more than <em>$75000 only made up 16% of iFood’s customer base yet are responsible for 39% of revenue</em> generated. This makes sense upon 
+												consideration that wine and meat sales drive iFood’s revenue, which like money spent, are also positively correlated with income 
+												<b>(R = 0.72, R= 0.70)</b>. Thus, iFood revenue seems to be significantly driven by the purchasing of wine and meat by higher income customers.
+											</p>
+										</div>
+										<div class="col-8 col-12-small">
+											<br>
+											<span class="image fit"><img src="Images2/incvswine.png" alt="" /></span>
+										</div>
+									</div>
+
+									<hr class="major" />
+
+									<h3 id="iFoodSect2"><u>Income, Campaign Success, and Wine/Meat</u></h3>
+									<div class = "row">
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/CAMP.png" alt="" /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/AICA.png" alt="" /></span>
+										</div>
+										<p>- Customers that accept campaigns tend to be richer and spend more, particularly on wine and meat.
+										</p>
+									</div>
+									<hr class="major" />
+
+									<h3 id="iFoodSect3"><u>Does Having Children Effect Spending and Campaign Success ?</u></h3>
+
+									<div class = "row">
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/NAC.png" alt="" /></span>
+										</div>
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/MSC.png" alt="" /></span>
+										</div>
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/CANC.png" alt="" /></span>
+										</div>
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/DSWW.png" alt="" /></span>
+										</div>
+										<p>A similar pattern to that seen in the spending habits of high income customers is witnessed in customers with no children 
+											(however this group does also tend to earn more). These customers tend to <em>spend more</em>,
+											once again particularly on wine and meat, and they are also <em>more receptive to iFood's
+											 campaigns</em>. Although these customers only make up <b>28%</b> of the iFood customer base they constitute <b>53%</b> of its revenue and <b>46%</b> of the 
+											 customers that accepted campaigns. Contrastingly, customers who have children are earning less and are less likely to 
+											 accept campaigns. Notably, these effects are more pronounced in those who have kids in contrast to customers who 
+											 only have teens.
+										</p>
+										<p>It is noteworthy that those with at least one child still <em>spend a greater percentage of their total purchases on wine</em>, 
+											with <b>62%</b> of revenue generated in that customer segment attributed to wine sales in comparison to 47% in those who do 
+											not have children. Moreover, this segment of customers made </em>4.4 times more web-visits (<b>82%</b> of all web-visits) in 
+											comparison to those with children</em> and prefers making purchases through deal offers (<b>86%</b> of all deal purchases). 
+											However, the increased web-activity of this segment <em>does not translate to an increase in web purchases</em>, with an average 
+											of <b>0.66</b> purchases per visit in comparison to an average of <b>1.28</b> purchases per visit seen in those with no children.
+										</p>	 
+									</div>
+									<hr class="major" />
+
+									<h3 id="iFoodSect4"><u>Evaluating iFood Distribution Channels</u></h3>
+									<div class = "row">
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/CIC.png" alt="" /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/WWW.png" alt="" /></span>
+										</div>
+										<p>iFood sells its products through four main channels, via deals, in-store, online, and catalogue. Most purchases were made In store 
+										<b>(39%)</b>, yet a sizable portion can be attributed to web purchases as well <b>(28%)</b>. In contrast purchases made via deals or catalogue 
+											were far less common among customers. Notably, an increased number of web visits per month did not seem to correlate with an 
+											increase in web purchases <b>(R= -0.06)</b>.
+										</p>
+									</div>
+
+									<hr class="major" />
+
+									<h3 id="iFoodSect5"><u>What's happening with the campaigns ?</u></h3>	
+
+									<div class = "row">
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/OCA.png" alt="" /></span>
+										</div>
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/AC.png" alt="" /></span>
+										</div>
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/ASCA.png" alt="" /></span>
+										</div>
+										<div class="col-3 col-12-small">
+											<span class="image fit"><img src="Images2/ICAAA.png" alt="" /></span>
+										</div>
+										<p>Overall, only <b>28%</b> of iFood’s customer base accepted at least one campaign, with the <em>average campaign attracting <b>11%</b> 
+											of customers</em>. Among these, campaign 6 was the most successful, and attracted 254% more customers (311 in total) 
+											than the campaign average prior to it, which was 122. Campaign 2 proved to be the least successful with an acceptance 
+											rate of <b>1%</b>. As discussed earlier, campaign acceptance is positively correlated with income and a lack of children and 
+											is negatively correlated with having children. Moreover, those who accept one campaign are more likely to accept 
+											another, with <b>39%</b> <em>of campaign acceptance stemming from customers who had already accepted one campaign prior</em>. 
+											Campaign 5 acceptance was positively correlated with customer expenditure, with an average spend of <b>$1536</b>.
+										</p>
+									</div>
+									<hr class="major" />
+
+									<h3 id="iFoodSect5"><u>The Future</u></h3>
+									
+									<p>- Higher income groups and customers with no children are driving expenditure on iFood products together with campaign acceptance, in contrast having 
+										children is negatively correlated to both money spent and campaign success. Thus, a two-pronged advertising approach is suitable.
+										<br>
+										<br>
+
+										- - The first should target <em>high income groups without children</em>:
+										<br>
+										<br>
+										<b>Personalized Campaigns</b>: Develop personalized marketing campaigns highlighting premium products like wine and meat. Use targeted emails and social media 
+										ads that showcase these products' quality and exclusivity.
+										<br>
+										<b>Exclusive Deals and Membership Programs</b>: Introduce exclusive deals and membership benefits such as priority delivery or special discounts on premium items.
+										<br>
+										<b>Content Marketing</b>: Create content around wine and gourmet food pairing, recipes, and lifestyle blogs that resonate with high-income customers.
+										<br>
+										<br>
+										
+										- - The second should focus on <em>low-income groups with children</em>:
+										<br>
+										<br>
+										<b>Affordable Meal Plans and Deals</b>: Offer budget-friendly meal plans and deals that are family-oriented. Emphasize value for money, and convenience.
+										<br>
+										<b>Partnerships with Schools and Family-Oriented Brands</b>: Collaborate with schools, childcare centers, and family-oriented brands to offer promotions 
+										and educational content about healthy eating for families.
+										<br>
+										<b>Seasonal Campaigns and Promotions</b>: Run seasonal campaigns during school holidays, back-to-school periods, and festive seasons that cater to 
+										families with children.
+										<br>
+										<br>
+										
+										-	Wine and Meat are the most successful products, generating 83% of total iFood sales, sales of less popular products need to be increased.
+										<br>   
+										<br>
+										<b>Bundling and Cross-Selling</b>: Create bundles that include popular items (like wine and meat) with less popular products to encourage customers to 
+										try new items.
+										<br>
+										<b>Discounts and Flash Sales</b>: Run flash sales and discounts on less popular products. Highlight these offers on the main page of the app and website.
+										<br>
+										Customer Reviews and Testimonials: Encourage customers to leave reviews and testimonials for less popular products to build trust and interest 
+										among potential buyers.
+										<br>
+										<br>
+										
+										-	Web and store purchases are the most successful channels; thus, advertising should take place and focus on these channels in order to increase customer engagement:
+										<br>
+										<br>
+										<b>Enhanced Web Experience</b>: Improve the web experience with an intuitive interface, faster load times, and personalized recommendations based on browsing 
+										history and previous purchases.
+										<br>
+										<b>In-Store Promotions</b>: Use in-store displays, flyers, and promotions to drive attention to ongoing campaigns and less popular products. Employ QR codes 
+										 that customers can scan to learn more about products and offers.
+										 <br>
+										<b>Omni-Channel Strategy</b>: Ensure a seamless experience across all channels. For instance, allow customers to view and use their in-store loyalty points and 
+										rewards online.
+										<br>
+										<br>
+										
+										-	Campaign 6 was the most successful, Campaign 2 the least, and Campaign 5 acceptance was positively correlated with iFood revenue:
+										<br>
+										<br>
+										<b>Campaign Analysis</b>: Conduct a detailed analysis of Campaigns 2, 5, and 6 to understand what worked well. Identify key elements such as the type of offers, 
+										communication channels used, and customer demographics targeted.
+										<br>
+										<b>Replicate Success Factors</b>: Apply the successful strategies identified from these campaigns to future campaigns. Customize the approach based on the target
+										 audience for each campaign.
+										 <br>
+										<b>A/B Testing</b>: Implement A/B testing for campaign elements like subject lines, visuals, call-to-actions, and offers to continuously optimize campaign 
+										performance.  
+										<br>
+										<br>
+										-	Website visits per month are negatively correlated with website purchases. iFood should Investigate customer behavior on website and attempt to 
+										increase customer website visit to purchase ratio:
+										<br>
+										<br>
+										<b>Behavioral Analytics</b>: Use tools like Google Analytics and heatmaps to understand user behavior on the website. Identify drop-off points, popular pages, 
+										and areas for improvement.
+										<br>
+										<b>Personalized Recommendations</b>: Implement AI-driven personalized recommendations based on browsing and purchase history to increase the website 
+										visit-to-purchase ratio.
+										<br>
+										<b>Streamlined Checkout Process</b>: Simplify the checkout process to reduce cart abandonment. Offer multiple payment options and ensure the process is mobile-friendly.
+										<br>
+										<br>
+										
+										<h4 id="iFoodSect5"><u>General Recommendations:</u></h4>
+										<b> - Loyalty Programs</b>:
+										<br>
+										Introduce a robust loyalty program that rewards customers for frequent purchases, referrals, and engagement with campaigns. Offer points that can be redeemed 
+										for discounts or exclusive products.
+										<br>
+										<br>
+										<b> - Innovative Payment Solutions</b>:
+										<br>
+										Offer flexible payment solutions such as Buy Now, Pay Later (BNPL) and subscription models for regular deliveries of essential items.
+										<br>
+										<br>
+										<b> - Sustainability Initiatives</b>:
+										<br>
+										Promote sustainable practices by offering eco-friendly packaging, and sourcing products from sustainable suppliers. Highlight these efforts in marketing campaigns 
+										to attract environmentally conscious customers, who tend to be higher income, have the ability to spend more, and make up the majority of iFood revenue.
+										</p>
+								</div>
+							</section>
+
+					</div>
+
+				
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/SamSyed12" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/sameel-syed/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Sameel Syed 2024 [sameelnaqvi@gmail.com] </li><li>
+							</ul>
+						</div>
+					</footer>
+					<section id = "contact"></section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
