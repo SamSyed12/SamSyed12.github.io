@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Project- Sameel Syed</title>
+		<title>iFood Analysis- Sameel Syed</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -14,7 +14,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo"><strong>Sameel Syed</strong> <span>Data Analyst</span></a>
+						<a href="index.html" class="logo"><strong>Sameel Syed</strong></a>
 						<nav>
 							<a href="#menu"></a>
 						</nav>
@@ -38,19 +38,32 @@
 						<!-- iFood -->
 							<section id="iFood">
 								<div class="inner">
+									<span class="image main"><img src="Images2/IfoodIMG/FoodDel2.jpg" alt="" /></span>
 									<header class="major">
-										<h1>iFood: What's Working and What Isn't ?</h1>
+										<h1>Unlocking Business Potential: An Analysis of iFood</h1>
 									</header>
-									<p>Considering it's position as the lead food delivery app in Brazil, with presence in over a thousand cities nationwide, 
-										maintaining customer engagement is key for both growth and consolidating it's position as the as the market leader. 
-										The company provided a sample <a href="https://www.kaggle.com/datasets/jackdaoud/marketing-data">dataset</a> that mocks metainformation 
-										on customers demographics and campaign interactions whilst also providing company data. I aimed to understand this data and conducted a robust exploratory 
-										analysis in the hopes of finding business opportunities & insights together with data driven proposals that could optimize the campaigns results & 
-										generate value for the company. After the removal of duplicate information and imputing outliers/missing data by the 
-										mean the dataset consisted of 2205 customers. In total 37 different data attributes were provided in the dataset and included the following types of 
-										information:
+									<p>In the competitive world of food delivery services, understanding customer behavior and engagement is pivotal for maintaining 
+										a leading position. iFood, the foremost food delivery app in Brazil, serves over a thousand cities nationwide. With a dynamic 
+										market and ever-evolving consumer preferences, iFood’s ability to keep its customers engaged is crucial for its growth and 
+										consolidation as the market leader. 
+									</p>
+									<P>This analysis dives into a <a href="https://www.kaggle.com/datasets/jackdaoud/marketing-data">dataset</a>
+										provided by iFood, which includes meta-information about customers and their interactions with various iFood campaigns. 
+										By conducting a comprehensive exploratory analysis using excel, this study aims to uncover actionable insights and business 
+										opportunities that can optimize campaign results and generate significant value for the company.
+										Through insight into the intricacies of customer engagement I present data-driven proposals 
+										that can enhance marketing strategies and operational efficiency. By understanding the patterns and trends within this 
+										dataset, iFood can tailor its campaigns more effectively, ultimately driving customer satisfaction and loyalty.
+									</p>
+									<p>Join me as I unravel the story behind the numbers and discover how data-driven insights can transform business strategies 
+										and propel iFood to even greater heights in the Brazilian food delivery market. After the removal of duplicate information and 
+										imputing outliers/missing data by the mean the dataset consisted of 2205 customers, featuring 37 different data attributes 
+										which included the following types of information:
 									</p>
 									<p><b>Customer Demographics | Customer Product and Channel Preferences | Customer Campaign Acceptance/Rejection | Company Metrics</b></p>
+
+									<hr class="major" />
+
 									<h4><u>Some Key Takeaways</u>
 									</h4>
 									<p> -   <b>72%</b> of customers <em>rejected</em> all campaigns. <br>
@@ -67,13 +80,16 @@
 
 									<h3 id="iFoodSect1"><u>What's Driving Customer Spending</u></h3>
 									<div class = "row">
-										<div class="col-6 col-12-small">
-											<span class="image fit"><img src="Images2/IncoVSamount.png" alt="" /></span>
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-6 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/IncoVSamount.png" alt="" /></span>
+											</div>
+											<div class="col-6 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/prodinfo.png" alt="" /></span>
+											</div>
 										</div>
-										<div class="col-6 col-12-small">
-											<span class="image fit"><img src="Images2/prodinfo.png" alt="" /></span>
-										</div>
-										<p>- Customers who earn more are spending more on iFood products <b>[68% of expenditure variance is explained by income]</b> <br>
+										
+										<p><br>- Customers who earn more are spending more on iFood products <b>[68% of expenditure variance is explained by income]</b> <br>
 										   - Revenue is largely driven by sales of wine and meat <b>[83% of iFood revenue is generate via these products]</b></p>
 
 										<p>A bivariate analysis suggests that as customer income rises so does the average amount spent by the customer. Based on this, 
@@ -82,16 +98,18 @@
 										</p>
 									</div>
 									<div class = "row">
-										<div class="col-4 col-12-small">
-											<span class="image fit"><img src="Images2/customerIncPro.png" alt="" /></span>
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-4 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/customerIncPro.png" alt="" /></span>
+											</div>
+											<div class="col-4 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/baseIncL.png" alt="" /></span>
+											</div>
+											<div class="col-4 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/MSinc.png" alt="" /></span>
+											</div>
 										</div>
-										<div class="col-4 col-12-small">
-											<span class="image fit"><img src="Images2/baseIncL.png" alt="" /></span>
-										</div>
-										<div class="col-4 col-12-small">
-											<span class="image fit"><img src="Images2/MSinc.png" alt="" /></span>
-										</div>
-										<p>- Those who earn more than <em>$50000</em> make up <b>89%</b> of IFood's income while <b>39%</b> of this is solely attributed to those making more than <em>$75000</em> a year</p>
+										<p><br>- Those who earn more than <em>$50000</em> make up <b>89%</b> of IFood's income while <b>39%</b> of this is solely attributed to those making more than <em>$75000</em> a year</p>
 									</div>
 									<div class = "row">
 										<div class="col-4 col-12-small">
@@ -105,7 +123,7 @@
 										</div>
 										<div class="col-8 col-12-small">
 											<br>
-											<span class="image fit"><img src="Images2/incvswine.png" alt="" /></span>
+											<span class="image fit"><img src="Images2/IfoodIMG/incvswine.png" alt="" /></span>
 										</div>
 									</div>
 
@@ -113,32 +131,39 @@
 
 									<h3 id="iFoodSect2"><u>Income, Campaign Success, and Wine/Meat</u></h3>
 									<div class = "row">
-										<div class="col-6 col-12-small">
-											<span class="image fit"><img src="Images2/CAMP.png" alt="" /></span>
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-6 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/CAMP.png" alt="" /></span>
+											</div>
+											<div class="col-6 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/AICA.png" alt="" /></span>
+											</div>
 										</div>
-										<div class="col-6 col-12-small">
-											<span class="image fit"><img src="Images2/AICA.png" alt="" /></span>
-										</div>
-										<p>- Customers that accept campaigns tend to be richer and spend more, particularly on wine and meat.
+										<br>
+										<p> <br>- Customers that accept campaigns tend to be richer and spend more, particularly on wine and meat.
 										</p>
 									</div>
+
 									<hr class="major" />
 
 									<h3 id="iFoodSect3"><u>Does Having Children Effect Spending and Campaign Success ?</u></h3>
 
 									<div class = "row">
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/NAC.png" alt="" /></span>
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/NAC.png" alt="" /></span>
+											</div>
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/MSC.png" alt="" /></span>
+											</div>
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/CANC.png" alt="" /></span>
+											</div>
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/DSWW.png" alt="" /></span>
+											</div>
 										</div>
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/MSC.png" alt="" /></span>
-										</div>
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/CANC.png" alt="" /></span>
-										</div>
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/DSWW.png" alt="" /></span>
-										</div>
+										<br>
 										<p>A similar pattern to that seen in the spending habits of high income customers is witnessed in customers with no children 
 											(however this group does also tend to earn more). These customers tend to <em>spend more</em>,
 											once again particularly on wine and meat, and they are also <em>more receptive to iFood's
@@ -159,17 +184,19 @@
 
 									<h3 id="iFoodSect4"><u>Evaluating iFood Distribution Channels</u></h3>
 									<div class = "row">
-										<div class="col-6 col-12-small">
-											<span class="image fit"><img src="Images2/CIC.png" alt="" /></span>
-										</div>
-										<div class="col-6 col-12-small">
-											<span class="image fit"><img src="Images2/WWW.png" alt="" /></span>
-										</div>
-										<p>iFood sells its products through four main channels, via deals, in-store, online, and catalogue. Most purchases were made In store 
-										<b>(39%)</b>, yet a sizable portion can be attributed to web purchases as well <b>(28%)</b>. In contrast purchases made via deals or catalogue 
-											were far less common among customers. Notably, an increased number of web visits per month did not seem to correlate with an 
-											increase in web purchases <b>(R= -0.06)</b>.
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-6 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/CIC.png" alt="" /></span>
+											</div>
+											<div class="col-6 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/WWW.png" alt="" /></span>
+											</div>
+											<p>iFood sells its products through four main channels, via deals, in-store, online, and catalogue. Most purchases were made In store 
+											<b>(39%)</b>, yet a sizable portion can be attributed to web purchases as well <b>(28%)</b>. In contrast purchases made via deals or catalogue 
+												were far less common among customers. Notably, an increased number of web visits per month did not seem to correlate with an 
+												increase in web purchases <b>(R= -0.06)</b>.
 										</p>
+										</div>
 									</div>
 
 									<hr class="major" />
@@ -177,18 +204,21 @@
 									<h3 id="iFoodSect5"><u>What's happening with the campaigns ?</u></h3>	
 
 									<div class = "row">
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/OCA.png" alt="" /></span>
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/OCA.png" alt="" /></span>
+											</div>
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/AC.png" alt="" /></span>
+											</div>
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/ASCA.png" alt="" /></span>
+											</div>
+											<div class="col-3 col-12-small">
+												<span class="image fit"><img src="Images2/IfoodIMG/ICAAA.png" alt="" /></span>
+											</div>
 										</div>
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/AC.png" alt="" /></span>
-										</div>
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/ASCA.png" alt="" /></span>
-										</div>
-										<div class="col-3 col-12-small">
-											<span class="image fit"><img src="Images2/ICAAA.png" alt="" /></span>
-										</div>
+										<br>
 										<p>Overall, only <b>28%</b> of iFood’s customer base accepted at least one campaign, with the <em>average campaign attracting <b>11%</b> 
 											of customers</em>. Among these, campaign 6 was the most successful, and attracted 254% more customers (311 in total) 
 											than the campaign average prior to it, which was 122. Campaign 2 proved to be the least successful with an acceptance 
@@ -200,7 +230,7 @@
 									</div>
 									<hr class="major" />
 
-									<h3 id="iFoodSect5"><u>The Future</u></h3>
+									<h3 id="iFoodSect5"><u>Considerations for the Future</u></h3>
 									
 									<p>- Higher income groups and customers with no children are driving expenditure on iFood products together with campaign acceptance, in contrast having 
 										children is negatively correlated to both money spent and campaign success. Thus, a two-pronged advertising approach is suitable.
@@ -286,6 +316,8 @@
 										<br>
 										<br>
 										
+										<hr class="major" />
+
 										<h4 id="iFoodSect5"><u>General Recommendations:</u></h4>
 										<b> - Loyalty Programs</b>:
 										<br>
