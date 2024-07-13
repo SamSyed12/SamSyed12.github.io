@@ -273,12 +273,19 @@ input, select, textarea {
 
 	hr {
 		border: 0;
-		border-bottom: solid 1px rgba(212, 212, 255, 0.1);
+		border-bottom: solid 1px rgba(216, 216, 229, 0.1);
 		margin: 2em 0;
 	}
 
 		hr.major {
 			margin: 3em 0;
+		}
+
+		hr.special {
+			border: 0;
+			height: 0.1px;
+			background: rgb(110, 167, 214);
+			margin-top: 5em;
 		}
 
 	.align-left {
@@ -2202,6 +2209,16 @@ input, select, textarea {
 			.image.fit img {
 				width: 100%;
 			}
+		
+		.image.dash {
+			display: block;
+			margin: 0 0 1em 0;
+			width: 100%;
+		}
+
+			.image.dash img {
+				width: 100%;
+			}
 
 		.image.allproj{
 			display: inline-block;
@@ -2216,7 +2233,7 @@ input, select, textarea {
 		.image.lastm{
 			display: block;
 			margin: 0 0 2em 0;
-			width: 100%;
+			width: 50%;
 		}
 			.image.lastm img {
 				width: 100%;
@@ -2878,11 +2895,11 @@ input, select, textarea {
 			}
 
 			.tiles article:nth-child(6n - 5):before {
-				background-color: #bb2548;
+				background-color: #8d82c4;
 			}
 
 			.tiles article:nth-child(6n - 4):before {
-				background-color: #8d82c4;
+				background-color: #bb2548;
 			}
 
 			.tiles article:nth-child(6n - 3):before {
