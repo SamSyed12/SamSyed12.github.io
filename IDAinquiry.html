@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Analyzing IDA Credits and Grants- Sameel Syed</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Sameel Syed</strong></a>
+						<nav>
+							<a href="#menu"></a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="all-projects.html">All Projects</a></li>
+							<li><a href="index.html#about">About</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="resume.html" class="button primary fit">Resume</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<span class="image main"><img src="Images2/IDAimg/IDA4.jpg" alt="" /></span>
+									<header class="major">
+										<h1>Global Trends: Analyzing IDA Credits and Grants Statements</h1>
+									</header>
+									<p>Established in 1960, the International Development Association (IDA) is a division of the 
+										world bank that provides loans and grants for programs that boost economic growth, reduce 
+										inequalities, and improve living conditions. The organization plays a crucial role in achieving 
+										global development goals by targeting the poorest and most vulnerable populations. 
+									</p>
+									<p>In this article I investigate regional patterns seen in IDA funding as well as some general funding 
+										trends based on the latest
+										<a href="https://finances.worldbank.org/Loans-and-Credits/IDA-Statement-Of-Credits-and-Grants-Historical-Dat/tdwh-3krx/about_data">
+										dataset</a> provided by the World Bank. The dataset offers a comprehensive 
+										overview of IDA's Statement of Credit and Grants as of July 15, 2024; featuring statements on a 
+										total of <b>10504</b> loans associated with <b>7530</b> projects from <b>137</b> recipient countries. 
+										The IDA is critical to development initiatives, particularly within poorer nations, and it is thus crucial 
+										to conduct an analysis of data related to IDA funding when attempting to comprehend global development 
+										trends. This analysis was conducted using MySQL and Tableau.
+									</p>
+									
+									<hr class ="special" />
+
+									<h4><u>Key Takeaways</u></h4>
+									<p>
+										- As of <em>July 15 2024</em>, The IDA has <b>10504</b> registered loans which have resulted in the 
+										provision of $<b>555,165,352,029.20</b>.
+										<br>
+										<br>
+										- The total amount due to the IDA on current loans is $<b>199,092,170,590.72</b> with South Asian Nations
+										representing 31% of this total. 
+										<br>
+										<br>
+										- The total amount paid on current loans is $<b>139,197,225,800.59</b>.
+										<br>
+										<br>
+										- The <em>average</em> Service Charge Rate for a loan is a mere <b>0.8</b>% highlighting the IDA's commitment
+										to growth.
+										<br>
+										<br>
+										- The <em>average</em> loan issued by the IDA has a value of  $<b>44,744,005.31</b>.
+										<br>
+										<br>
+										- Eastern and Southern Africa received the most funding $<b>172,935,391,698</b>. This is in line with IDA's 
+										 focus on development in poorer nations. 
+										<br>
+										<br>
+										- South Asian Nations owe the IDA the most money $<b>62,046,692,620</b>.
+										<br>
+										<br>
+										- India has the most loans <b>441</b> and projects <b>407</b> and has paid 61% of it's debt off. 
+										<br>
+										<br>
+										- Bangladesh owes the most $<b>19,887,305,315</b>, and has only paid off around 25% of it's debt.
+										<br>
+									</p>
+									
+									<hr class ="special" />
+
+									<header class="major">
+										<h2>Queries and Visualization</h2>
+									</header>
+
+									<h4>Queries to obtain general information:</h4>
+
+									<div class = "row justify-content-center">
+										<div class="col-6 col-12-small">
+											<span class="image fit "><img src="Images2/IDAimg/Queries/TotalOwed.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/IDAimg/Queries/GeneralFigs2.png" alt="" data-enlargable /></span>
+										</div>
+									</div>
+
+									<h4>Visuals | Queries for obtaining information relevant to graph:</h4>
+									<div class = "row justify-content-center">
+										<div class="col-6 col-12-medium">
+											<span class="image fit"><img src="Images2/IDAimg/Graphs/RegionLOANDUEPAID.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-medium ">
+											<br>
+											<span class="image fit"><img src="Images2/IDAimg/Queries/RegionLoan.png" alt="" data-enlargable /></span>	
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/IDAimg/Graphs/SACall.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<br>
+											<br>
+											<span class="image fit"><img src="Images2/IDAimg/Queries/SACowed.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/IDAimg/Graphs/Top5countriesamtdue.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<br>
+											<br>
+											<span class="image fit"><img src="Images2/IDAimg/Queries/CountriesThatOweTheMost.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/IDAimg/Graphs/top5proj.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<br>
+											<br>
+											<span class="image fit"><img src="Images2/IDAimg/Queries/Top5Projects.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<span class="image fit"><img src="Images2/IDAimg/Graphs/CountryLOANPROJ.png" alt="" data-enlargable /></span>
+										</div>
+										<div class="col-6 col-12-small">
+											<br>
+											<br>
+											<br>
+											<span class="image fit"><img src="Images2/IDAimg/Queries/TopCountryvsProjects:Loans.png" alt="" data-enlargable /></span>
+										</div>
+									</div>
+
+								</div>
+							</section>
+
+					</div>
+
+				
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/SamSyed12" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/sameel-syed/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Sameel Syed 2024 [sameelnaqvi@gmail.com] </li><li>
+							</ul>
+						</div>
+					</footer>
+					<section id = "contact"></section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/bootstrap.bundle.min.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/picenlarge.js"></script>
+
+	</body>
+</html>

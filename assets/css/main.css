@@ -1820,7 +1820,7 @@ input, select, textarea {
 	@media screen and (max-width: 736px) {
 
 		header.major {
-			max-width: 95%;
+			max-width: 100%;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -2216,6 +2216,17 @@ input, select, textarea {
 				width: 100%;
 			}
 		
+		.image.q {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+		}
+
+			.image.q img {
+				width: 100%;
+				aspect-ratio: 16/9;
+			}
+		
 		.image.dash {
 			display: block;
 			margin: 0 0 1em 0;
@@ -2233,7 +2244,8 @@ input, select, textarea {
 		}
 			.image.allproj img {
 				display: block;
-				aspect-ratio: 16/11;
+				aspect-ratio: 16/10;
+				opacity: 0.95;
 			}
 		
 		.image.lastm{
