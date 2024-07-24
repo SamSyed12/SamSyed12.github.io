@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Chess Bots- Sameel Syed</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Sameel Syed</strong></a>
+						<nav>
+							<a href="#menu"></a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="all-projects.html">All Projects</a></li>
+							<li><a href="index.html#about">About</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="resume.html" class="button primary fit">Resume</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<span class="image main"><img src="Images2/Chess/chessbanner.jpg" alt="" /></span>
+									<header class="major">
+										<h1>Making Chess Bots: MINIMAX, SARSA, AND Q-Learning</h1>
+									</header>
+									<p>As I am sure most of you are aware, chess is a two-player strategy board game that humans have been playing for quite a long time. 
+										I've always been interested in the game, although from a theoretical perspective rather than playing it, and recently I've become quite curious
+										about artificial intelligence models as well. Unsurprisingly, this gave rise to an interest in chess bots and I commenced a journey with a goal
+										of generating intelligent bots that could play chess to at least a somewhat competitive degree. With this objective in mind I developed a
+										chess game platform featuring three distinct chess bots, each utilizing a different algorithm: SARSA (State-Action-Reward-State-Action), Q-learning, 
+										and Minimax (with alpha-beta pruning). 
+									</p>
+									<p>
+										The SARSA and Q-learning bots were designed using reinforcement learning principles, where they learn optimal strategies through interaction with the 
+										game environment. The SARSA bot updates its policy based on the action taken, while the Q-learning bot focuses on maximizing future rewards regardless 
+										of the current action. The Minimax bot, enhanced with alpha-beta pruning, employs a classic game theory approach, systematically evaluating possible 
+										moves to minimize potential losses and maximize gains, while efficiently cutting off branches of the search tree that do not need to be explored.
+									</p>
+									<p>
+										To make this project accessible and interactive, I created a user-friendly digital interface using pygame, a free, open-source Python library that allows users to 
+										create multimedia applications. This interface allows users to play against any of the three chess bots, providing a hands-on experience with AI-driven opponents.
+										Feel free to download and play around with the code/game through my <a href="https://github.com/SamSyed12/Chess-AI"> GitHub</a>. 
+									</p>
+									
+									<hr class="special">
+
+									<header class="major">
+										<h2>The Minimax Algorithm with alpha-beta pruning</h2>
+									</header>
+									
+									<div class = "row">
+										<div class = "col-6 col-12-medium">
+											<p>The minimax algorithm is a recursive adversarial search algorithm. The algorithm features two players, the maximizing player, 
+												and the minimizing player. The goal of the maximizer player is to get to the highest score possible, whilst the minimizer player 
+												aims to minimize the score as much as possible. Every state thus has an associated value which is provided by an evaluation function 
+												and the algorithm makes use of these values to decide how the players can maximize or minimize their score in order to perform best. 
+												Both players play alternatively and assume that the other player is playing in an optimal fashion, where optimal play can be understood
+												 as the minimizer choosing a move that minimizes the score returned by the evaluation function and the maximizer choosing a move that 
+												 maximizes the score returned by the evaluation function. 
+											</p>
+											<p>
+												 The algorithm makes use of a depth first search approach to 
+												 find the minimizing or maximizing move and also makes use of recursion. The algorithm takes in a parameter for depth 
+												 and will traverse the game tree till that given depth or until it reaches a terminal node, after this it goes back 
+												 up the tree comparing values with one another and returns the minimum or maximum value depending on the player who is 
+												 playing.
+											</p>
+		
+											<p>
+												The minimax algorithm can be optimized by making use of alpha-beta pruning. This pruning process involves the pruning 
+												of the branches of the game tree that are not going to affect the choice of the minimizing or maximizing move. This 
+												improves the time complexity of the algorithm as it makes the choice of the maximum/minimum move faster. The way in 
+												which this works is that two values alpha and beta are initialized to negative infinity and infinity respectively. 
+												
+											</p>
+										</div>
+										<div class = "col-6 col-12-medium align-items-center">
+											<br>
+											<span class="image fit"><img src="Images2/Chess/minmaxalphabeta.png" alt="" data-enlargable/></span>
+											<p><b>My implementation of the MINIMAX approach (with Alpha-Beta Pruning)</b></p>
+										</div>
+										<p>The alpha value is then updated by the max player and is the greatest value found in the game tree till that point, 
+											conversely the beta value is updated by the min player and is the lowest value found in the game tree till that point.
+											With a pruning condition of <b>alpha</b> <em>>=</em> <b>Beta</b>.
+											As mentioned earlier and as also indicated by the pseudo code and implementation the minmax and alpha beta algorithm 
+											depend on an evaluation function to generate scores for each state. This begs the question: what is an evaluation 
+											function?
+										</p>
+
+
+									</div>
+
+									<hr class ="special">
+
+									<header class="major">
+										<h2>The Evaluation Function</h2>
+									</header>
+									
+									<p>
+										An Evaluation function is a heuristic function that is used to establish the value of a particular state.  
+										So, for a chess game, the evaluation function would take in the board as an input, together with a player and then 
+										return a value based on certain traits such as the number or positions of pieces and enemy pieces. These values can 
+										then be made use of by the alpha beta code to generate a minimizing or maximizing move. The evaluation function I used 
+										for my chess game was predominantly based on the values of pieces and enemy pieces, for each player scores were based 
+										on the player’s pieces subtracted with the enemy player’s pieces these values were then increased or decreased based on 
+										position matrixes, thereby encouraging pieces to move into positions that would be beneficial for them. For example, 
+										for a knight, which has a lot more options when in the center of the board in comparison to the sides, a matrix which 
+										provides a greater value return for a knight in the center of the board leads to a more accurate evaluation of the board 
+										state. This is what I implemented for every piece based on its characteristics. Initial values for the pieces were based 
+										on suggestions by the chess wiki page  and the values were as follows: Pawn 1.0, Knight 3.2, Bishop 3.3, Rook 5.0, Queen 
+										9.0, King 200. The values were considered as negatives for the black pieces. The implementation of my evaluation function 
+										is shown below:
+
+									</p>
+
+									<div class = "row">
+										<div class = "col-6 col-12-medium">
+											<span class="image fit"><img src="Images2/Chess/eval1.png" alt="" data-enlargable/></span>
+										</div>
+										<div class = "col-6 col-12-medium">
+											<span class="image fit"><img src="Images2/Chess/eval2.png" alt="" data-enlargable/></span>
+										</div>
+									</div>
+
+									<hr class ="special">
+
+									<header class="major">
+										<h2>SARSA and Q-Learning Algorithms</h2>
+									</header>
+									<p>
+										The SARSA algorithm is a reinforcement learning algorithm that is used to solve Markov decision processes (MDPs). 
+										It stands for "State-Action-Reward-State-Action" and is an on-policy algorithm, meaning it learns the optimal policy 
+										by directly estimating the action-value function for the current policy being followed. The SARSA algorithm follows an 
+										iterative process of interacting with the environment, updating the action-value function based on observed rewards and 
+										estimated future rewards, and gradually improving the policy. By repeatedly exploring the state-action space and updating 
+										the action-values, SARSA aims to find the optimal policy that maximizes the cumulative rewards over time. I implemented 
+										this algorithm for the second intelligent player and a variation of SARSA, namely Q-Learning which is simply SARSA but 
+										off policy (Q-Learning takes the greedy action, which is an action that gives the maximum Q-value for the state). 
+										My implementation for SARSA and Q-Learning is shown below (the feature vector for the algorithms was based on the same 
+										factors as my evaluation function).
+									</p>
+
+									<div class = "row">
+										<div class = "col-6 col-12-medium">
+											<span class="image fit"><img src="Images2/Chess/sarsa1.png" alt="" data-enlargable/></span>
+										</div>
+										<div class = "col-6 col-12-medium">
+											<span class="image fit"><img src="Images2/Chess/sarsa2.png" alt="" data-enlargable/></span>
+										</div>
+										<div class = "col-6 col-12-medium">
+											<span class="image fit"><img src="Images2/Chess/q1.png" alt="" data-enlargable/></span>
+										</div>
+										<div class = "col-6 col-12-medium">
+											<span class="image fit"><img src="Images2/Chess/q2.png" alt="" data-enlargable/></span>
+										</div>
+									</div>
+								</div>
+							</section>
+
+					</div>
+
+				
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/SamSyed12" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/sameel-syed/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Sameel Syed 2024 [sameelnaqvi@gmail.com] </li><li>
+							</ul>
+						</div>
+					</footer>
+					<section id = "contact"></section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/bootstrap.bundle.min.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/picenlarge.js"></script>
+
+	</body>
+</html>
