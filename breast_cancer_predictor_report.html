@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Predicting Breast Cancer Malignancy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* Control image sizing to prevent oversized displays */
+        .image.fit img {
+            max-height: 500px;
+            width: auto;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        /* Keep main header image large */
+        .image.main img {
+            max-height: 400px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        /* Ensure images don't overflow their containers */
+        section img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo"><strong>Sameel Syed</strong></a>
+            <nav>
+                <a href="#menu"></a>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-projects.html">All Projects</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+            <ul class="actions stacked">
+                <li><a href="resume.html" class="button primary fit">Resume</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main" class="alt">
+
+            <!-- One -->
+            <section id="one">
+                <div class="inner">
+                    <span class="image main"><img src="Images2/BreastCancerPredictor/pink_ribbon.jpg" alt="Breast Cancer Awareness" /></span>
+
+                    <header class="major">
+                        <h1>Predicting Malignancy in Breast Tumours Using a SVM</h1>
+                    </header>
+
+                    <!-- Summary -->
+                    <h2>Summary</h2>
+                    <p>This project develops a Support Vector Machine (SVM) classification model to predict whether breast tumours are benign or malignant using digitized image measurements. Our final classifier achieved high performance on the test set with 104 correctly classified cases out of 109 samples. However, the model produced one false negative—misclassifying a malignant tumour as benign—which represents a significant clinical concern. While the overall accuracy is promising, further model refinement is necessary before clinical deployment to minimize false negatives, which could delay critical treatment interventions.</p>
+
+                    <hr class="special" />
+
+                    <!-- Introduction -->
+                    <h2>Introduction</h2>
+                    <p>Breast cancer remains one of the most prevalent cancers among women, with early detection shown to dramatically improve outcomes. Patients diagnosed at early stages have a 5-year survival rate of 99%, compared to only 31% for late-stage diagnoses. Traditional tumour diagnosis methods can be subjective and depend heavily on physician experience.</p>
+
+                    <p>An accurate machine learning classifier could provide several benefits:</p>
+                    <ul>
+                        <li><strong>Objectivity:</strong> Reducing subjectivity in diagnosis by providing consistent, data-driven predictions</li>
+                        <li><strong>Scalability:</strong> Enabling more efficient screening programs in resource-limited settings</li>
+                        <li><strong>Early intervention:</strong> Supporting faster diagnostic pathways to improve patient outcomes</li>
+                        <li><strong>Clinical decision support:</strong> Assisting physicians by flagging high-risk cases for additional review</li>
+                    </ul>
+
+                    <p>Since benign tumours remain localized and stop growing, while malignant tumours invade surrounding tissues and metastasize, accurate classification is critical for determining appropriate treatment pathways. Thus, if a machine learning algorithm can successfully classify tumours we can expect substantially improved patient outcomes.</p>
+
+                    <h3>Research Question</h3>
+                    <p>Can we build a machine learning model to accurately predict whether a newly discovered breast tumour is benign or malignant based on digitized image measurements of tumour cell nuclei?</p>
+
+                    <hr class="special" />
+
+                    <!-- Methods -->
+                    <h2>Methods</h2>
+                    <p>All data manipulation and analysis was performed using Python and the following packages: pandas for data manipulation, NumPy for numerical computing, scikit-learn for machine learning algorithms, and Altair for visualization. The computational environment was containerized using Docker.</p>
+
+                    <h3>Data</h3>
+                    <p>The Wisconsin Diagnostic Breast Cancer (WDBC) dataset was retrieved from the UCI Machine Learning Repository. Created by Dr. William H. Wolberg, W. Nick Street, and Olvi L. Mangasarian at the University of Wisconsin-Madison, the dataset contains measurements computed from digitized images of fine needle aspirate (FNA) samples of breast masses.</p>
+
+                    <p>The dataset consists of:</p>
+                    <ul>
+                        <li>569 instances (357 benign, 212 malignant)</li>
+                        <li>30 real-valued features representing measurements of cell nuclei characteristics</li>
+                        <li>1 binary target variable (Diagnosis: Benign or Malignant)</li>
+                    </ul>
+
+                    <p>Each feature represents one of ten cell nucleus characteristics (radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, and fractal dimension) computed in three forms:</p>
+                    <ul>
+                        <li>Mean value across cells</li>
+                        <li>Standard error (SE) of the values</li>
+                        <li>Maximum ("worst") value observed</li>
+                    </ul>
+
+                    <h3>Feature Analysis</h3>
+
+                    <h4>Distribution Analysis</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="image fit"><img src="Images2/BreastCancerPredictor/dist_chart.png" alt="Distribution Analysis" data-enlargable /></span>
+                            <p><em><strong>Figure 1: Distribution Analysis.</strong> Distribution of all 30 features colored by diagnosis class. Size-related features (radius_mean, perimeter_mean, area_mean) show clear separation between benign (blue) and malignant (orange) tumours, with malignant tumours exhibiting consistently larger values. Shape complexity features (concavity_mean, concave_points_mean) demonstrate strong discriminative power, with malignant tumours showing higher irregularity. Texture and smoothness features display substantial overlap between classes, suggesting lower individual predictive value. Right skewness is evident in area and concavity features, particularly in their standard error (_se) variants.</em></p>
+                        </div>
+                    </div>
+
+                    <h4>Outlier Analysis</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="image fit"><img src="Images2/BreastCancerPredictor/feature_distributions.png" alt="Outlier Analysis" data-enlargable /></span>
+                            <p><em><strong>Figure 2: Looking at Outliers.</strong> Numerous outliers were observed, particularly in malignant samples for size-related features. These extreme values are not data errors but represent biologically meaningful signals characteristic of aggressive tumour growth. Therefore, these outliers were retained in the analysis as they contain critical diagnostic information.</em></p>
+                        </div>
+                    </div>
+
+                    <h4>Correlation Analysis</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="image fit"><img src="Images2/BreastCancerPredictor/corr_chart.png" alt="Correlation Heatmap" data-enlargable /></span>
+                            <p><em><strong>Figure 3: Multicollinearity.</strong> Pearson and Spearman correlation matrices revealing severe multicollinearity. Near-perfect correlation (r > 0.95) between radius, perimeter, and area across all three statistical forms (_mean, _se, _max). Strong positive correlations (r > 0.85) among concavity, concave_points, and compactness. Similar correlation patterns observed in both Pearson (linear) and Spearman (monotonic) metrics. This multicollinearity is geometrically expected but creates redundancy that can destabilize models and inflate variance.</em></p>
+                        </div>
+                    </div>
+
+                    <h4>Pairwise Separability</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="image fit"><img src="Images2/BreastCancerPredictor/pair_chart.png" alt="Pairwise Separability" data-enlargable /></span>
+                            <p><em><strong>Figure 4: Pairwise Separability.</strong> Pairplot visualizing 2D relationships between selected features. Size-related features (radius_mean, area_mean) combined with shape complexity metrics (concavity_mean, concave_points_mean) demonstrate clear class separation with minimal overlap. The curved relationship between area and radius reinforces the geometric redundancy identified in correlation analysis.</em></p>
+                        </div>
+                    </div>
+
+                    <h4>Initial Findings</h4>
+                    <ul>
+                        <li><strong>Class Separation:</strong>
+                            <ul>
+                                <li><strong>High Separability:</strong> Features related to <strong>size</strong> (radius, perimeter, area) and <strong>concavity</strong> (concave_points, concavity) show clear distinction between Benign and Malignant classes (Malignant samples generally have higher values).</li>
+                                <li><strong>Low Separability:</strong> Texture, Smoothness, and Fractal Dimension show significant overlap, indicating they are weaker individual predictors.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Distributions:</strong>
+                            <ul>
+                                <li><strong>Skewness:</strong> "Area" and "Concavity" features (both _mean and _se) are heavily <strong>right-skewed</strong>.</li>
+                                <li><strong>Outliers:</strong> Visible in the upper tails of area_max and perimeter_se.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Correlations (Multicollinearity):</strong>
+                            <ul>
+                                <li><strong>Severe Multicollinearity:</strong> radius, perimeter, and area are highly correlated. This is expected geometrically but redundant for models.</li>
+                                <li>concavity, concave_points, and compactness also exhibit very high positive correlation.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Preprocessing Pipeline</h3>
+                    <p>Based on our primary exploration of the data, the following was implemented within our model:</p>
+                    <ol>
+                        <li><strong>Feature Selection:</strong> We removed redundant features to reduce multicollinearity.</li>
+                        <li><strong>Scaling:</strong> Since our features vary vastly in scale (e.g., area > 1000 vs. smoothness < 0.2), we used <strong>StandardScaler</strong> to standardize all features to unit variance.</li>
+                    </ol>
+
+                    <h3>Model Development</h3>
+                    <p>A Support Vector Machine (SVM) classifier with radial basis function (RBF) kernel was selected. SVM was chosen because:</p>
+                    <ul>
+                        <li>It performs well on high-dimensional data</li>
+                        <li>It is effective with clear class separation as observed in our initial feature analysis</li>
+                    </ul>
+
+                    <h4>Hyperparameter Tuning</h4>
+                    <p>Grid search with 15-fold cross-validation was performed to optimize:</p>
+                    <ul>
+                        <li><strong>C</strong> (regularization parameter): [0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</li>
+                        <li><strong>gamma</strong> (kernel coefficient): [0.001, 0.01, 0.1, 1.0, 10.0, 100.0]</li>
+                    </ul>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="image fit"><img src="Images2/BreastCancerPredictor/svm_heatmap.png" alt="SVM Hyperparameter Heatmap" data-enlargable /></span>
+                            <p><em><strong>Figure 5: Heatmap for SVM GridSearchCV Mean Test Score.</strong> The heatmap shows mean test scores across the hyperparameter grid. The optimal hyperparameters were C = 10.0 and gamma = 0.001. These values provided the best balance between model complexity and generalization performance, achieving the highest mean cross-validation score.</em></p>
+                        </div>
+                    </div>
+
+                    <hr class="special" />
+
+                    <!-- Results & Discussion -->
+                    <h2>Results & Discussion</h2>
+
+                    <h3>Model Performance</h3>
+                    <p>The final SVM classifier demonstrated strong performance on the test set. Figure 6 presents the confusion matrix, showing:</p>
+                    <ul>
+                        <li><strong>True Negatives (Benign correctly classified):</strong> 68 cases</li>
+                        <li><strong>False Positives (Benign misclassified as Malignant):</strong> 4 cases</li>
+                        <li><strong>False Negatives (Malignant misclassified as Benign):</strong> 1 case</li>
+                        <li><strong>True Positives (Malignant correctly classified):</strong> 41 cases</li>
+                    </ul>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="image fit"><img src="Images2/BreastCancerPredictor/con_mat_heatmap.png" alt="Confusion Matrix" data-enlargable /></span>
+                            <p><em><strong>Figure 6: Heatmap for Confusion Matrix.</strong> The confusion matrix shows 68 true negatives, 4 false positives, 1 false negative, and 41 true positives. Overall test accuracy: 95.61% (109 correct predictions out of 114 test samples).</em></p>
+                        </div>
+                    </div>
+
+                    <p><strong>Overall test accuracy: 95.61%</strong> (109 correct predictions out of 114 test samples)</p>
+
+                    <p>The model's strong performance aligns with expectations based on the clear feature patterns observed during our initial feature analysis. Size and shape complexity features provided strong discriminative signals, enabling accurate classification in most cases.</p>
+
+                    <p>However, the presence of <strong>one false negative</strong> represents the primary concern. In a clinical context, false negatives are significantly more harmful than false positives. A false negative could lead to:</p>
+                    <ul>
+                        <li>Delayed diagnosis and treatment initiation</li>
+                        <li>Disease progression to more advanced, less treatable stages</li>
+                        <li>Reduced survival probability</li>
+                    </ul>
+
+                    <p>Moreover, while the four false positives (benign tumours classified as malignant) are less critical as they are likely to lead to follow-up testing rather than immediate treatment, they still represent unnecessary patient anxiety and healthcare costs.</p>
+
+                    <h3>Clinical Implications</h3>
+                    <p>The model's 96% accuracy is promising but insufficient for clinical deployment as a standalone diagnostic tool. Medical applications require extremely high sensitivity for malignant cases to minimize false negatives. The single false negative in this small test set suggests the model may produce several missed diagnoses across larger patient populations.</p>
+
+                    <h3>Limitations</h3>
+                    <p>Several limitations affect the interpretation of these results:</p>
+                    <ul>
+                        <li><strong>Small test set:</strong> With only 114 test samples, performance estimates have wide confidence intervals</li>
+                        <li><strong>Single dataset source:</strong> Model generalizability to other populations or imaging equipment is unknown</li>
+                        <li><strong>Feature engineering:</strong> Limited exploration of feature interactions or polynomial features</li>
+                    </ul>
+
+                    <h3>Future Work</h3>
+                    <p>To improve model reliability for clinical use, we recommend:</p>
+                    <ol>
+                        <li><strong>Class weight adjustment:</strong> Increase the penalty for false negatives during training to prioritize recall over precision</li>
+                        <li><strong>Ensemble methods:</strong> Combine multiple classifiers to improve robustness</li>
+                        <li><strong>External validation:</strong> Test on independent datasets from different medical centers to assess generalizability</li>
+                        <li><strong>Feature engineering:</strong> Explore interaction terms and domain-specific features to capture complex patterns</li>
+                        <li><strong>Error analysis:</strong> Conduct detailed investigation of misclassified cases to identify systematic patterns</li>
+                    </ol>
+
+                    <hr class="special" />
+
+                    <div class="row">
+                        <div class="col-2">
+                            <header class="major">
+                                <h4>Code & Data</h4>
+                            </header>
+                        </div>
+                        <div class="col-10 d-flex align-items-center justify-content-start">
+                            <ul class="actions">
+                                <li><a href="https://github.com/SamSyed12/DSCI_522_Group37" class="button fit primary">GitHub Repo</a></li>
+                                <li><a href="https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic" class="button fit">Dataset</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://github.com/SamSyed12" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="https://www.linkedin.com/in/sameel-syed/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Sameel Syed 2026 [sameelnaqvi@gmail.com]</li>
+                </ul>
+            </div>
+        </footer>
+        <section id="contact"></section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/picenlarge.js"></script>
+
+</body>
+</html>
