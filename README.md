@@ -1,2 +1,2 @@
-# SamSyed12.github.io
-My personal portfolio website
+# Welcome!
+Checkout my [Portfolio](https://samsyed12.github.io/)
