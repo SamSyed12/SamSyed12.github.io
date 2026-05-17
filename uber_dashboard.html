@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Uber 2024 Ride Data Dashboard - Sameel Syed</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html" class="logo"><strong>Sameel Syed</strong></a>
+        <nav>
+          <a href="#menu"></a>
+        </nav>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="all-projects.html">All Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+        <ul class="actions stacked">
+          <li><a href="resume.html" class="button primary fit">Resume</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main" class="alt">
+        <section id="one">
+          <div class="inner">
+
+            <!-- Header image: replace src with your Uber image -->
+            <span class="image main"><img src="Images2/UBER/uber_img.jpg" alt="Uber dashboard preview" /></span>
+
+            <header class="major">
+              <h1>Uber 2024 Ride Data: Operations & Revenue Dashboard</h1>
+            </header>
+
+            <!-- Summary -->
+            <h2>Summary</h2>
+            <p>This project develops an interactive Shiny dashboard to help an operations manager at Uber understand how the business is performing across bookings, revenue, cancellations, and service quality. The dashboard is built around concrete job stories: reporting an overview to leadership, comparing vehicle types, analyzing cancellations, assessing seasonality, and monitoring ratings across service categories. </p>
+            <p>Using Python, Shiny, and reactive components, the app transforms raw ride-level data into a set of KPIs and visualizations that can be filtered by date range and vehicle type. Users can quickly see total bookings, total revenue, and cancelled bookings; break down revenue by vehicle category; examine booking value over time; compare average ratings by vehicle type; and explore booking status and cancellation reasons in a hierarchical view.</p>
+
+            <hr class="special" />
+
+            <!-- Data & Audience -->
+            <h2>Data & Intended Users</h2>
+            <p>The dashboard is designed for an operations lead (e.g., a city GM or regional ops manager) like “James,” who regularly reports performance up to the CEO and needs to understand which parts of the operation are driving revenue, where cancellations are concentrated, and how service quality compares across vehicle types. [file:130]</p>
+            <p>The underlying dataset contains ride-level records from Uber’s 2024 operations, including timestamps, booking values, vehicle categories, booking statuses, and cancellation reasons. The dashboard focuses on high-level metrics and patterns rather than predictive modeling, with an emphasis on clarity and decision support for non-technical stakeholders.</p>
+
+            <hr class="special" />
+
+            <!-- Job Stories / Questions -->
+            <h2>Key Questions the Dashboard Answers</h2>
+            <ul>
+              <li><strong>Overall performance:</strong> What are the total bookings, total revenue, and number of cancelled bookings in the selected period, and how does this change when focusing on a specific vehicle type?</li>
+              <li><strong>Vehicle mix and revenue:</strong> Which vehicle categories generate the most revenue, and how does the revenue mix shift over time or by filter? </li>
+              <li><strong>Cancellations and inefficiencies:</strong> How many bookings are being cancelled, and what are the main cancellation reasons within the selected date range and for specific vehicle types?</li>
+              <li><strong>Seasonality:</strong> How does total booking value evolve over time, and what seasonal or trend patterns emerge when zooming in on particular vehicle types?</li>
+              <li><strong>Service quality:</strong> How do average driver ratings compare across vehicle categories, and which segments may require attention from a customer satisfaction standpoint?</li>
+            </ul>
+
+            <hr class="special" />
+
+            <!-- Interaction & Components -->
+            <h2>Dashboard Design & Interaction</h2>
+            <p>The app is structured around a few core controls and reactive calculations: a date range slider, a vehicle type selector, and reactive datasets that feed KPIs and charts. </p>
+            <ul>
+              <li><strong>Filters:</strong> A date range slider and a vehicle type select input control the main filtered dataset used by most components. </li>
+              <li><strong>KPIs:</strong> Text outputs display total bookings, total revenue, and cancelled bookings, with dynamic labels that update when a vehicle type is selected.</li>
+              <li><strong>Revenue by vehicle type:</strong> A pie chart shows the revenue breakdown across vehicle categories for the selected date range; clicking a slice filters the rest of the dashboard to that vehicle type. </li>
+              <li><strong>Booking value over time:</strong> A line chart shows total booking value over time, reflecting both the date and vehicle filters, with a dynamic title.</li>
+              <li><strong>Ratings by vehicle type:</strong> A bar chart compares average driver ratings across vehicle categories; clicking a bar updates the vehicle filter and propagates through other components.</li>
+              <li><strong>Status and cancellations:</strong> A sunburst chart visualizes booking status and cancellation reasons hierarchically, helping users see the distribution of ride outcomes and underlying causes.</li>
+            </ul>
+            <p>Click interactions on the revenue pie chart and ratings bar chart update the vehicle type selector via reactive logic, ensuring that the whole dashboard responds coherently to user exploration. </p>
+
+            <hr class="special" />
+
+            <!-- Example Insights -->
+            <h2>Example Insights</h2>
+            <p>With these components, an operations manager can quickly discover patterns such as:</p>
+            <ul>
+              <li>Specific vehicle categories that generate strong revenue but show lower average ratings, indicating a possible trade-off between volume and service quality.</li>
+              <li>Periods with elevated cancellation rates for certain vehicle types, pointing to potential supply, pricing, or communication issues.</li>
+              <li>Seasonal peaks in booking value that may warrant targeted driver incentives or dynamic pricing strategies.</li>
+            </ul>
+
+            <hr class="special" />
+
+            <!-- Links -->
+            <div class="row">
+              <div class="col-2">
+                <header class="major">
+                  <h4>Code & Live App</h4>
+                </header>
+              </div>
+              <div class="col-10 d-flex align-items-center justify-content-start">
+                <ul class="actions">
+                  <li><a href="https://github.com/UBC-MDS/DSCI-532_2026_32_Uber_dashboard" class="button fit primary">GitHub Repo</a></li>
+                  <li><a href="https://019cca3c-2682-2efd-8947-1fd5caf109bc.share.connect.posit.cloud/" class="button fit">Live Dashboard</a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <ul class="icons">
+            <li><a href="https://github.com/SamSyed12" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="https://www.linkedin.com/in/sameel-syed/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+          </ul>
+          <ul class="copyright">
+            <li>&copy; Sameel Syed 2026 [sameelnaqvi@gmail.com]</li>
+          </ul>
+        </div>
+      </footer>
+      <section id="contact"></section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/picenlarge.js"></script>
+
+  </body>
+</html>

@@ -43,39 +43,26 @@
 										<h1>Unlocking Business Potential: An Analysis of iFood</h1>
 									</header>
 									<div class = "content">
-										<p>In the competitive world of food delivery services, understanding customer behavior and engagement is pivotal for maintaining 
-											a leading position. iFood, the foremost food delivery app in Brazil, serves over a thousand cities nationwide. With a dynamic 
-											market and ever-evolving consumer preferences, iFood’s ability to keep its customers engaged is crucial for its growth and 
-											consolidation as the market leader. 
-										</p>
-										<P>This analysis dives into a <a href="https://www.kaggle.com/datasets/jackdaoud/marketing-data">dataset</a>
-											provided by iFood, which includes meta-information about customers and their interactions with various iFood campaigns. 
-											By conducting a comprehensive exploratory analysis using excel, this study aims to uncover actionable insights and business 
-											opportunities that can optimize campaign results and generate significant value for the company.
-											Through insight into the intricacies of customer engagement I present data-driven proposals 
-											that can enhance marketing strategies and operational efficiency. By understanding the patterns and trends within this 
-											dataset, iFood can tailor its campaigns more effectively, ultimately driving customer satisfaction and loyalty.
-										</p>
-										<p>Join me as I unravel the story behind the numbers and discover how data-driven insights can transform business strategies 
-											and propel iFood to even greater heights in the Brazilian food delivery market. After the removal of duplicate information and 
-											imputing outliers/missing data by the mean the dataset consisted of 2205 customers, featuring 37 different data attributes 
-											which included the following types of information:
-										</p>
+										<p>In the competitive world of food delivery, understanding who your best customers are and how they engage with campaigns is central to growth. iFood, Brazil’s leading food delivery app, operates in over a thousand cities and serves a diverse customer base whose preferences and spending patterns vary widely. In a market where switching costs are low and alternatives are plentiful, iFood’s ability to keep high-value customers engaged is critical for sustaining its position as a market leader.</p>
+
+<p>This analysis uses a <a href="https://www.kaggle.com/datasets/jackdaoud/marketing-data">customer marketing dataset</a> from iFood that includes demographic information, purchase behaviour across product categories, preferred channels, and responses to multiple marketing campaigns. Working primarily in Excel, the goal was to perform an exploratory analysis that uncovers actionable patterns in spending and campaign responsiveness, and to turn those patterns into practical recommendations for marketing and product teams.</p>
+
+<p>After removing duplicate records and imputing missing values with reasonable estimates, the dataset consists of 2,205 customers with 37 attributes covering <b>Customer Demographics</b>, <b>Product and Channel Preferences</b>, <b>Campaign Acceptance/Rejection</b>, and <b>Company Metrics</b>. The focus of this work is not just on describing these customers, but on identifying which segments drive revenue, which segments underperform, and where there is clear opportunity to refine iFood’s campaign and channel strategy.</p>
 										<p><b>Customer Demographics | Customer Product and Channel Preferences | Customer Campaign Acceptance/Rejection | Company Metrics</b></p>
 									</div>
 									<hr class="major" />
 
 									<h4><u>Some Key Takeaways</u>
 									</h4>
-									<p> -   <b>72%</b> of customers <em>rejected</em> all campaigns. <br>
-										-   Customer's with <b>no children</b> and customers with <b>high income</b> spend more and are more <em>responsive to campaigns</em>. <br>
-										-	Campaign acceptance and expenditure is <b>lower</b> in those who <em>earn less</em> and those who <em> kids</em>. <br>
-										-	<b>Wine</b> and <b>Meat</b> drive iFood’s revenue; making up <b>83%</b> of total revenue. <br>
-										-	<b>Web</b> and <b>In store</b> purchases are most popular among consumers, these channels account for <b>67%</b> of all sales. <br>
-										-	<em>Campaign 6</em> was most successful (attracted <b>15%</b> of the consumer base), <em>Campaign 2</em> the least (<b>1%</b> success rate). <br> 
-										-   Customer's who were responsive to <em>Campaign 5</em>spent the most with an average of <b>$1536</b> per customer. <br>
-										- 	The average iFood customer spends around <b>$563</b> (with <em>$306</em> attributed to Wine and <em>$166</em> to Meat). <br>
-									</p>
+									<p>
+    - Around <b>72%</b> of customers rejected every campaign, indicating that current marketing efforts resonate with only a minority of the base.<br>
+    - Customers with <b>no children</b> and those with <b>higher incomes</b> spend more and are more likely to accept campaigns, making them core drivers of both revenue and campaign performance.<br>
+    - Campaign acceptance and spending are noticeably <b>lower</b> among lower-income customers and those with children, suggesting that current offers and messaging are not well aligned with their constraints and priorities.<br>
+    - Two product categories—<b>wine</b> and <b>meat</b>—drive roughly <b>83%</b> of total revenue, meaning that much of iFood’s income is tied to a narrow set of higher-end purchases.<br>
+    - <b>Web</b> and <b>in-store</b> channels account for about <b>67%</b> of all purchases, making them the most important touchpoints to optimize for discovery, conversion, and promotion.<br>
+    - <em>Campaign 6</em> was the most successful, reaching about <b>15%</b> of customers, while <em>Campaign 2</em> had only about a <b>1%</b> acceptance rate, highlighting large differences in campaign design effectiveness.<br>
+    - Customers who responded to <em>Campaign 5</em> were especially valuable, spending an average of approximately <b>$1,536</b> each over the period analysed.<br>
+    - The average iFood customer spends around <b>$563</b>, with roughly <em>$306</em> on wine and <em>$166</em> on meat, underscoring how strongly revenue is concentrated in a subset of higher-margin products.</p>
 
 									<hr class="major" />
 
@@ -93,10 +80,7 @@
 										<p><br>- Customers who earn more are spending more on iFood products <b>[68% of expenditure variance is explained by income]</b> <br>
 										   - Revenue is largely driven by sales of wine and meat <b>[83% of iFood revenue is generate via these products]</b></p>
 
-										<p>A bivariate analysis suggests that as customer income rises so does the average amount spent by the customer. Based on this, 
-										customers were segmented by income into four groups and their spending habits were investigated. The majority of iFood’s customer 
-										income levels are concentrated within the $25000 - $75000 range with this making up 73% of customers.
-										</p>
+										<p>A bivariate analysis shows that as customer income increases, average spend rises sharply. Based on this, customers were segmented into four income bands and their behaviour examined separately. Most of iFood’s customers fall between $25,000 and $75,000 in annual income (about 73% of the base), but the highest income segments contribute a disproportionate share of total revenue.</p>
 									</div>
 									<div class = "row">
 										<div class="row gtr-50 gtr-uniform">
@@ -115,12 +99,7 @@
 									<div class = "row">
 										<div class="col-4 col-12-small">
 											<br>
-											<p>Although <em>48% of IFood’s customers make less than $50000 a year, these customers are only responsible for 11% on the income</em> generated by iFood 
-												over the previous two years. Thus, most of iFood’s revenue is being driven by customer’s earning more than $50000. Notably customers who 
-												earned more than <em>$75000 only made up 16% of iFood’s customer base yet are responsible for 39% of revenue</em> generated. This makes sense upon 
-												consideration that wine and meat sales drive iFood’s revenue, which like money spent, are also positively correlated with income 
-												<b>(R = 0.72, R= 0.70)</b>. Thus, iFood revenue seems to be significantly driven by the purchasing of wine and meat by higher income customers.
-											</p>
+											<p>Although about <em>48% of iFood’s customers earn less than $50,000 per year, they generate only around 11% of total revenue</em>. Most revenue comes from customers earning above $50,000, and the highest band—those earning more than <em>$75,000</em>—represents only 16% of the base but about 39% of revenue. This is consistent with the finding that wine and meat sales drive revenue and are strongly positively correlated with income <b>(R = 0.72 and R = 0.70)</b>, reinforcing that higher-income segments and premium categories are central to iFood’s current business model.</p>
 										</div>
 										<div class="col-8 col-12-small">
 											<br>
@@ -233,10 +212,9 @@
 
 									<h3 id="iFoodSect5"><u>Considerations for the Future</u></h3>
 									
-									<p>- Higher income groups and customers with no children are driving expenditure on iFood products together with campaign acceptance, in contrast having 
-										children is negatively correlated to both money spent and campaign success. Thus, a two-pronged advertising approach is suitable.
-										<br>
-										<br>
+									<p>- The analysis suggests that iFood should prioritise a two-pronged strategy focused on (1) deepening engagement with high-income, child-free customers who already drive revenue and campaign success, and (2) redesigning offers and messaging for lower-income families with children, who currently spend less and are less responsive to campaigns.
+<br>
+<br>
 
 										- - The first should target <em>high income groups without children</em>:
 										<br>

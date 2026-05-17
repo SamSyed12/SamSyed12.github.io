@@ -43,57 +43,23 @@
 									<header class="major">
 										<h1>Global Trends: Analyzing IDA Credits and Grants Statements</h1>
 									</header>
-									<p>Established in 1960, the International Development Association (IDA) is a division of the 
-										world bank that provides loans and grants for programs that boost economic growth, reduce 
-										inequalities, and improve living conditions. The organization plays a crucial role in achieving 
-										global development goals by targeting the poorest and most vulnerable populations. 
-									</p>
-									<p>In this article I investigate regional patterns seen in IDA funding as well as some general funding 
-										trends based on the latest
-										<a href="https://finances.worldbank.org/Loans-and-Credits/IDA-Statement-Of-Credits-and-Grants-Historical-Dat/tdwh-3krx/about_data">
-										dataset</a> provided by the World Bank. The dataset offers a comprehensive 
-										overview of IDA's Statement of Credit and Grants as of July 15, 2024; featuring statements on a 
-										total of <b>10504</b> loans associated with <b>7530</b> projects from <b>137</b> recipient countries. 
-										The IDA is critical to development initiatives, particularly within poorer nations, and it is thus crucial 
-										to conduct an analysis of data related to IDA funding when attempting to comprehend global development 
-										trends. This analysis was conducted using MySQL and Tableau.
-									</p>
+									<p>Established in 1960, the International Development Association (IDA) is a division of the World Bank that provides concessional loans and grants to support economic growth, reduce inequalities, and improve living conditions in low-income countries. By targeting the poorest and most vulnerable populations, IDA plays a central role in advancing global development goals.</p>
+
+<p>In this project, I explore regional patterns and high-level trends in IDA funding using the latest <a href="https://finances.worldbank.org/Loans-and-Credits/IDA-Statement-Of-Credits-and-Grants-Historical-Dat/tdwh-3krx/about_data">Statement of Credits and Grants</a> dataset provided by the World Bank. The data, as of July 15, 2024, covers <b>10,504</b> loans associated with <b>7,530</b> projects across <b>137</b> recipient countries. Using MySQL for querying and Tableau for visualization, the analysis focuses on how funds are distributed by region, how much has been paid back versus remains due, and which countries and regions are most prominent in IDA’s current portfolio. The aim is to provide a concise, data-driven view of where concessional finance is flowing and how obligations are distributed globally.</p>
 									
 									<hr class ="special" />
 
 									<h4><u>Key Takeaways</u></h4>
 									<p>
-										- As of <em>July 15 2024</em>, The IDA has <b>10504</b> registered loans which have resulted in the 
-										provision of $<b>555,165,352,029.20</b>.
-										<br>
-										<br>
-										- The total amount due to the IDA on current loans is $<b>199,092,170,590.72</b> with South Asian Nations
-										representing 31% of this total. 
-										<br>
-										<br>
-										- The total amount paid on current loans is $<b>139,197,225,800.59</b>.
-										<br>
-										<br>
-										- The <em>average</em> Service Charge Rate for a loan is a mere <b>0.8</b>% highlighting the IDA's commitment
-										to growth.
-										<br>
-										<br>
-										- The <em>average</em> loan issued by the IDA has a value of  $<b>44,744,005.31</b>.
-										<br>
-										<br>
-										- Eastern and Southern Africa received the most funding $<b>172,935,391,698</b>. This is in line with IDA's 
-										 focus on development in poorer nations. 
-										<br>
-										<br>
-										- South Asian Nations owe the IDA the most money $<b>62,046,692,620</b>.
-										<br>
-										<br>
-										- India has the most loans <b>441</b> and projects <b>407</b> and has paid 61% of it's debt off. 
-										<br>
-										<br>
-										- Bangladesh owes the most $<b>19,887,305,315</b>, and has only paid off around 25% of it's debt.
-										<br>
-									</p>
+    - As of <em>July 15, 2024</em>, the IDA has <b>10,504</b> registered loans with a total commitment of approximately <b>$555.2 billion</b> in concessional finance.<br><br>
+    - The total amount <b>currently due</b> to IDA on active loans is about <b>$199.1 billion</b>, with South Asian countries accounting for roughly <b>31%</b> of this outstanding balance. This highlights South Asia as a major locus of IDA’s ongoing credit exposure.<br><br>
+    - Borrowers have collectively repaid about <b>$139.2 billion</b> so far, reflecting substantial progress on servicing existing obligations while leaving a large pipeline of future repayments.<br><br>
+    - The <em>average</em> service charge rate on loans is only about <b>0.8%</b>, underscoring IDA’s role as a highly concessional lender focused on development rather than commercial return.<br><br>
+    - The <em>average</em> loan size is roughly <b>$44.7 million</b>, with significant variation across regions and countries depending on project scope and economic context.<br><br>
+    - Eastern and Southern Africa has received the largest share of total funding at approximately <b>$172.9 billion</b>, consistent with IDA’s focus on lower-income countries and regions facing high development needs.<br><br>
+    - South Asian countries owe the largest combined amount to IDA, at around <b>$62.0 billion</b>, reflecting both the scale of financing and the region’s centrality in IDA’s portfolio.<br><br>
+    - India has the highest number of loans (<b>441</b>) and projects (<b>407</b>) and has repaid about <b>61%</b> of its obligations, indicating a long-standing, large-scale engagement with IDA.<br><br>
+    - Bangladesh owes the largest outstanding amount, about <b>$19.9 billion</b>, and has so far repaid around <b>25%</b> of its debt—signalling heavy ongoing reliance on concessional finance for development.</p>
 									
 									<hr class ="special" />
 
@@ -101,7 +67,7 @@
 										<h2>Queries and Visualization</h2>
 									</header>
 
-									<h4>Queries to obtain general information:</h4>
+									<h4>Queries to obtain high-level portfolio metrics:</h4>
 
 									<div class = "row justify-content-center">
 										<div class="col-6 col-12-small">
@@ -112,7 +78,7 @@
 										</div>
 									</div>
 
-									<h4>Visuals | Queries for obtaining information relevant to graph:</h4>
+									<h4>Regional and country-level patterns: visuals and underlying queries</h4>
 									<div class = "row justify-content-center">
 										<div class="col-6 col-12-medium">
 											<span class="image fit"><img src="Images2/IDAimg/Graphs/RegionLOANDUEPAID.png" alt="" data-enlargable /></span>

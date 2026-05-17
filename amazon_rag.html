@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Hybrid Search & RAG on Amazon Reviews - Sameel Syed</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html" class="logo"><strong>Sameel Syed</strong></a>
+        <nav>
+          <a href="#menu"></a>
+        </nav>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="all-projects.html">All Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+        <ul class="actions stacked">
+          <li><a href="resume.html" class="button primary fit">Resume</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main" class="alt">
+        <section id="one">
+          <div class="inner">
+
+            <!-- Header image: update path if needed -->
+            <span class="image main"><img src="Images2/Amazon/amazon-review-tool.png" alt="Amazon RAG app preview" /></span>
+
+            <header class="major">
+              <h1>Hybrid Search and RAG on Amazon Reviews</h1>
+            </header>
+
+            <!-- Summary -->
+            <h2>Summary</h2>
+            <p>This project builds an information retrieval and question-answering system over the Musical Instruments category of the Amazon Reviews 2023 dataset. It implements BM25 (keyword-based) and semantic search (embedding-based) retrievers, combines them into a hybrid retriever, and then layers a Retrieval-Augmented Generation (RAG) pipeline on top to answer shopping-style queries using real reviews.</p>
+            <p>An interactive Shiny app lets users choose BM25, semantic, or hybrid retrieval, submit natural-language queries, inspect retrieved reviews, and view LLM-generated answers grounded in that context. The work also explores scaling the corpus from a 500-document sample up to 135,701 documents and compares different Llama 3 models for answer quality.</p>
+
+            <hr class="special" />
+
+            <!-- Data -->
+            <h2>Data</h2>
+            <p>The system operates on the Musical Instruments subset of the Amazon Reviews 2023 dataset, working with 135,701 review–product pairs after joining review text with product metadata. </p>
+            <p>Each document passed to the retrievers is formed by concatenating three fields into a single text string:</p>
+            <ul>
+              <li><b>product_title</b> — product name</li>
+              <li><b>review_title</b> — user-written review headline</li>
+              <li><b>review_text</b> — full review body</li>
+            </ul>
+            <p>Additional metadata such as ratings, average_rating, and price are retained for display in the app but not used directly for retrieval scoring.</p>
+
+            <hr class="special" />
+
+            <!-- Retrieval -->
+            <h2>Retrieval Design</h2>
+
+            <h3>Preprocessing</h3>
+            <p>Text preprocessing is applied consistently to both the corpus and incoming queries: lowercasing, punctuation removal, whitespace normalization, and a minimal English stopword list (e.g. “the”, “and”, “is”) to preserve recall on specific product queries. The processed corpus is saved to a Parquet file for reuse. </p>
+
+            <h3>BM25 (keyword-based)</h3>
+            <p>BM25 retrieval is implemented with <code>rank_bm25</code> (BM25Okapi). Documents are pre-tokenized and stored alongside the processed corpus so that index builds do not need to re-tokenize all 135k documents. The BM25 index is serialized and loaded at app startup. </p>
+
+            <h3>Semantic Search (embeddings)</h3>
+            <p>Semantic search uses the <code>sentence-transformers</code> model <code>all-MiniLM-L6-v2</code> to embed documents and queries, with FAISS (IndexFlatIP) as the vector index. Embeddings are L2-normalized so cosine similarity can be computed via inner product. The embedding pipeline is optimized for scale by avoiding unnecessary array copies and increasing batch size.</p>
+
+            <h3>Hybrid Retrieval</h3>
+            <p>A <code>HybridRetriever</code> combines BM25 and semantic search using Reciprocal Rank Fusion (RRF). Rather than ranking the full 135k-document corpus on every query, each retriever returns a capped candidate set (e.g. max(top_k × 10, 200)) and RRF fuses them, which preserves quality while keeping latency manageable.</p>
+
+            <hr class="special" />
+
+            <!-- RAG -->
+            <h2>RAG Pipeline & LLM Choice</h2>
+            <p>On top of retrieval, the project implements two RAG pipelines:</p>
+            <ul>
+              <li><b>SemanticRAGPipeline</b> — uses the FAISS semantic retriever</li>
+              <li><b>HybridRAGPipeline</b> — uses the hybrid BM25 + semantic retriever</li>
+            </ul>
+            <p>Each RAG pipeline follows a three-stage pattern: retrieve top-k documents, build a structured context from reviews and product titles, and send the query plus context to an LLM for answer generation.</p>
+            <p>Different Llama 3 models from Groq were evaluated, including <code>llama-3.1-8b-instant</code> and <code>llama-3.3-70b-versatile</code>, on realistic shopping queries (e.g. “best acoustic guitar for beginners under $100”, “durable microphone stand for live performances”). The 70B model consistently produced more precise, well-cited answers and was chosen as the default in the final pipeline.</p>
+
+            <hr class="special" />
+
+            <!-- Evaluation -->
+            <h2>Evaluation & Limitations</h2>
+            <p>The hybrid RAG pipeline was evaluated qualitatively on five query types (keyword, semantic, and complex multi-constraint queries), scoring answers on accuracy, completeness, and fluency. With the larger corpus, the pipeline produced substantive, grounded answers for all five queries, whereas earlier experiments on a smaller index often failed due to missing relevant documents. </p>
+            <p>Two key limitations emerged: the retriever cannot enforce all query constraints simultaneously (e.g. “for rock” and “under $300” for a beginner electric guitar), and the LLM tends to generate from weak or loosely related context rather than explicitly stating that constraints cannot be verified. Suggested improvements include adding a cross-encoder re-ranker, tightening prompts to enforce constraint checking, and using metadata filters (e.g. restricting to electric guitars) before retrieval. </p>
+
+            <hr class="special" />
+
+            <!-- Scaling & Deployment -->
+            <h2>Scaling & Deployment Considerations</h2>
+            <p>To scale beyond 100k documents, the workflow optimizes corpus storage, BM25 index construction, and embedding generation, reducing redundant work and memory usage. Indexes are saved as artifacts that can be loaded into memory on app startup. </p>
+            <p>The final discussion also outlines a cloud deployment plan: storing raw and processed data plus indexes in S3, containerizing the Shiny app on EC2 behind a load balancer, and periodically rebuilding indexes via scheduled jobs (e.g. AWS Lambda) when new products are added. LLM inference is assumed to use hosted APIs rather than self-hosted models to avoid GPU infrastructure overhead.</p>
+
+            <hr class="special" />
+
+            <!-- Links -->
+            <div class="row">
+              <div class="col-2">
+                <header class="major">
+                  <h4>Code & Setup</h4>
+                </header>
+              </div>
+              <div class="col-10 d-flex align-items-center justify-content-start">
+                <ul class="actions">
+                  <li><a href="https://github.com/UBC-MDS/DSCI_575_project_aidanhew_sameel12" class="button fit primary">GitHub Repo</a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <ul class="icons">
+            <li><a href="https://github.com/SamSyed12" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="https://www.linkedin.com/in/sameel-syed/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+          </ul>
+          <ul class="copyright">
+            <li>&copy; Sameel Syed 2026 [sameelnaqvi@gmail.com]</li>
+          </ul>
+        </div>
+      </footer>
+      <section id="contact"></section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/picenlarge.js"></script>
+
+  </body>
+</html>

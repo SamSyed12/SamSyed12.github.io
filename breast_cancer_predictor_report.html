@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Predicting Breast Cancer Malignancy</title>
+    <title>Predicting Breast Cancer Malignancy - Sameel Syed</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -70,8 +70,7 @@
 
                     <!-- Summary -->
                     <h2>Summary</h2>
-                    <p>This project develops a Support Vector Machine (SVM) classification model to predict whether breast tumours are benign or malignant using digitized image measurements. Our final classifier achieved high performance on the test set with 104 correctly classified cases out of 109 samples. However, the model produced one false negative—misclassifying a malignant tumour as benign—which represents a significant clinical concern. While the overall accuracy is promising, further model refinement is necessary before clinical deployment to minimize false negatives, which could delay critical treatment interventions.</p>
-
+                    <p>This project develops a Support Vector Machine (SVM) classification model to predict whether breast tumours are benign or malignant using digitized image measurements. The final classifier achieved strong performance on the held-out test set, correctly classifying 104 of 109 cases. However, the model produced one false negative—misclassifying a malignant tumour as benign—which is clinically critical because it could delay diagnosis and treatment. The results show that while an SVM can provide useful decision support for screening and flagging high-risk cases, careful calibration and further refinement are required before relying on it in real-world clinical workflows.</p>
                     <hr class="special" />
 
                     <!-- Introduction -->
@@ -86,7 +85,7 @@
                         <li><strong>Clinical decision support:</strong> Assisting physicians by flagging high-risk cases for additional review</li>
                     </ul>
 
-                    <p>Since benign tumours remain localized and stop growing, while malignant tumours invade surrounding tissues and metastasize, accurate classification is critical for determining appropriate treatment pathways. Thus, if a machine learning algorithm can successfully classify tumours we can expect substantially improved patient outcomes.</p>
+                    <p>Since benign tumours tend to remain localized while malignant tumours can invade surrounding tissue and metastasize, accurate classification is critical for determining appropriate treatment and follow-up. A well-calibrated machine learning model will not replace clinical judgment, but it can support physicians by highlighting patterns that might be missed at scale and by flagging cases that merit closer review.</p>
 
                     <h3>Research Question</h3>
                     <p>Can we build a machine learning model to accurately predict whether a newly discovered breast tumour is benign or malignant based on digitized image measurements of tumour cell nuclei?</p>
@@ -95,7 +94,7 @@
 
                     <!-- Methods -->
                     <h2>Methods</h2>
-                    <p>All data manipulation and analysis was performed using Python and the following packages: pandas for data manipulation, NumPy for numerical computing, scikit-learn for machine learning algorithms, and Altair for visualization. The computational environment was containerized using Docker.</p>
+                   <p>All data manipulation and analysis was performed in Python using pandas for data wrangling, NumPy for numerical computing, scikit-learn for machine learning, and Altair for visualization. The computational environment was containerized with Docker to ensure reproducibility across different systems.</p>
 
                     <h3>Data</h3>
                     <p>The Wisconsin Diagnostic Breast Cancer (WDBC) dataset was retrieved from the UCI Machine Learning Repository. Created by Dr. William H. Wolberg, W. Nick Street, and Olvi L. Mangasarian at the University of Wisconsin-Madison, the dataset contains measurements computed from digitized images of fine needle aspirate (FNA) samples of breast masses.</p>
@@ -171,7 +170,7 @@
                     </ul>
 
                     <h3>Preprocessing Pipeline</h3>
-                    <p>Based on our primary exploration of the data, the following was implemented within our model:</p>
+                    <p>Based on the initial exploratory analysis, the following steps were implemented in the modeling pipeline:</p>
                     <ol>
                         <li><strong>Feature Selection:</strong> We removed redundant features to reduce multicollinearity.</li>
                         <li><strong>Scaling:</strong> Since our features vary vastly in scale (e.g., area > 1000 vs. smoothness < 0.2), we used <strong>StandardScaler</strong> to standardize all features to unit variance.</li>
@@ -204,7 +203,7 @@
                     <h2>Results & Discussion</h2>
 
                     <h3>Model Performance</h3>
-                    <p>The final SVM classifier demonstrated strong performance on the test set. Figure 6 presents the confusion matrix, showing:</p>
+                    <p>The final SVM classifier demonstrated strong performance on the test set while also revealing important trade-offs for clinical use. Figure 6 presents the confusion matrix, showing:</p>
                     <ul>
                         <li><strong>True Negatives (Benign correctly classified):</strong> 68 cases</li>
                         <li><strong>False Positives (Benign misclassified as Malignant):</strong> 4 cases</li>
@@ -219,10 +218,9 @@
                         </div>
                     </div>
 
-                    <p><strong>Overall test accuracy: 95.61%</strong> (109 correct predictions out of 114 test samples)</p>
+                   <p><strong>Overall test accuracy: 95.61%</strong> (109 correct predictions out of 114 test samples), which aligns with expectations given the clear separation observed in the size- and shape-related features during exploration.</p>
 
-                    <p>The model's strong performance aligns with expectations based on the clear feature patterns observed during our initial feature analysis. Size and shape complexity features provided strong discriminative signals, enabling accurate classification in most cases.</p>
-
+                    <p>From a purely statistical perspective, this is a high-performing classifier. From a clinical perspective, however, the single false negative stands out: even one missed malignant case in a small test set signals that, at scale, the model could still fail on patients where early intervention is most important. This tension between accuracy and clinical risk is central to how such models should be evaluated and deployed.</p>
                     <p>However, the presence of <strong>one false negative</strong> represents the primary concern. In a clinical context, false negatives are significantly more harmful than false positives. A false negative could lead to:</p>
                     <ul>
                         <li>Delayed diagnosis and treatment initiation</li>
@@ -233,7 +231,7 @@
                     <p>Moreover, while the four false positives (benign tumours classified as malignant) are less critical as they are likely to lead to follow-up testing rather than immediate treatment, they still represent unnecessary patient anxiety and healthcare costs.</p>
 
                     <h3>Clinical Implications</h3>
-                    <p>The model's 96% accuracy is promising but insufficient for clinical deployment as a standalone diagnostic tool. Medical applications require extremely high sensitivity for malignant cases to minimize false negatives. The single false negative in this small test set suggests the model may produce several missed diagnoses across larger patient populations.</p>
+                    <p>The model's 96% accuracy is promising but insufficient for clinical deployment as a standalone diagnostic tool. Medical applications typically prioritize very high sensitivity for malignant cases to minimize false negatives, even at the cost of more false positives. The single false negative in this small test set suggests that at larger scale, the model could miss a non-trivial number of malignant cases if used without additional safeguards.</p>
 
                     <h3>Limitations</h3>
                     <p>Several limitations affect the interpretation of these results:</p>
